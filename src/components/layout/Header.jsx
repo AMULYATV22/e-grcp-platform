@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
@@ -34,9 +35,39 @@ export default function Header() {
   const user = useAppSelector(selectCurrentUser);
   const themeMode = useAppSelector(selectDarkMode);
 
+  const [search, setSearch] = useState("");
+
+  const menuItems = [
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Procurement", path: "/procurement" },
+    { name: "Vendors", path: "/vendors" },
+    { name: "Risk", path: "/risk" },
+    { name: "Compliance", path: "/compliance" },
+    { name: "Audit", path: "/audit" },
+    { name: "Approval Workbench", path: "/approvals" },
+    { name: "Reports", path: "/reports" },
+    { name: "Notifications", path: "/notifications" },
+    { name: "Settings", path: "/settings" },
+  ];
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");
+  };
+
+  const handleSearch = (event) => {
+    if (event.key !== "Enter") return;
+
+    const page = menuItems.find((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    if (page) {
+      navigate(page.path);
+      setSearch("");
+    } else {
+      alert("No matching page found.");
+    }
   };
 
   return (
@@ -47,7 +78,6 @@ export default function Header() {
       }}
     >
       <Toolbar>
-
         <Typography
           variant="h6"
           sx={{
@@ -71,8 +101,11 @@ export default function Header() {
           }}
         >
           <TextField
-            placeholder="Search..."
+            placeholder="Search modules..."
             size="small"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={handleSearch}
             sx={{
               width: {
                 xs: "100%",
@@ -96,11 +129,7 @@ export default function Header() {
               color="inherit"
               onClick={() => dispatch(toggleTheme())}
             >
-              {themeMode ? (
-                <Brightness7Icon />
-              ) : (
-                <Brightness4Icon />
-              )}
+              {themeMode ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
           </Tooltip>
 

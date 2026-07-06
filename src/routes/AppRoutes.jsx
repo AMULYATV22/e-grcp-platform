@@ -6,7 +6,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import MainLayout from "../layouts/MainLayout";
 import Loader from "../components/common/Loader";
 
-// Authentication Pages
+
 const LoginPage = lazy(() => import("../pages/auth/LoginPage"));
 const ForgotPasswordPage = lazy(() =>
   import("../pages/auth/ForgotPasswordPage")
@@ -18,12 +18,11 @@ const SessionExpiredPage = lazy(() =>
   import("../pages/auth/SessionExpiredPage")
 );
 
-// Dashboard
+
 const DashboardPage = lazy(() =>
   import("../pages/dashboard/DashboardPage")
 );
 
-// Procurement
 const ProcurementPage = lazy(() =>
   import("../pages/procurement/ProcurementPage")
 );
@@ -32,7 +31,7 @@ const ProcurementDetailsPage = lazy(() =>
   import("../pages/procurement/ProcurementDetailsPage")
 );
 
-// Vendors
+
 const VendorPage = lazy(() =>
   import("../pages/vendors/VendorPage")
 );
@@ -41,37 +40,37 @@ const VendorDetailsPage = lazy(() =>
   import("../pages/vendors/VendorDetailsPage")
 );
 
-// Risk
+
 const RiskPage = lazy(() =>
   import("../pages/risk/RiskPage")
 );
 
-// Compliance
+
 const CompliancePage = lazy(() =>
   import("../pages/compliance/CompliancePage")
 );
 
-// Audit
+
 const AuditPage = lazy(() =>
   import("../pages/audit/AuditPage")
 );
 
-// Approval Workbench
+
 const ApprovalWorkbenchPage = lazy(() =>
   import("../pages/approval/ApprovalWorkbenchPage")
 );
 
-// Reports
+
 const ReportsPage = lazy(() =>
   import("../pages/reports/ReportsPage")
 );
 
-// Notifications
+
 const NotificationsPage = lazy(() =>
   import("../pages/notifications/NotificationsPage")
 );
 
-// Settings
+
 const SettingsPage = lazy(() =>
   import("../pages/settings/SettingsPage")
 );
@@ -80,10 +79,10 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<Loader label="Loading..." />}>
       <Routes>
-        {/* Redirect */}
+        
         <Route path="/" element={<Navigate to="/login" replace />} />
 
-        {/* Public Routes */}
+        
         <Route path="/login" element={<LoginPage />} />
         <Route
           path="/forgot-password"
@@ -98,7 +97,7 @@ export default function AppRoutes() {
           element={<SessionExpiredPage />}
         />
 
-        {/* Protected Routes */}
+       
         <Route
           element={
             <ProtectedRoute>

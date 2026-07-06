@@ -122,10 +122,6 @@ export const {
 
 export default authSlice.reducer;
 
-/* -------------------------
-   Selectors
-------------------------- */
-
 export const selectIsAuthenticated = (state) =>
   state.auth.isAuthenticated;
 

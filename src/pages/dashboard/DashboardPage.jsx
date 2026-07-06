@@ -38,7 +38,7 @@ export default function DashboardPage() {
         Executive Dashboard
       </Typography>
 
-      {/* KPI Cards */}
+      
       <Grid container spacing={3} sx={{ mb: 3 }}>
         {loading ? (
           <Grid
@@ -110,10 +110,10 @@ export default function DashboardPage() {
         )}
       </Grid>
 
-      {/* Dashboard Charts */}
+      
       <DashboardCharts />
 
-      {/* Activity Timeline */}
+     
       <Paper
         elevation={3}
         sx={{

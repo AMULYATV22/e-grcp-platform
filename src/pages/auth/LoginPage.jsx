@@ -58,13 +58,13 @@ export default function LoginPage() {
       setLoginError(null);
       dispatch(setLoading(true));
 
-      // Call login service
+     
       const response = await loginUser(
         data.email,
         data.password
       );
 
-      // Dispatch login action
+     
       dispatch(
         login({
           name: response.name,
